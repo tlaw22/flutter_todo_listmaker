@@ -12,17 +12,26 @@ class TaskTile extends StatelessWidget {
 }
 
 class TaskCheckbox extends StatefulWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      value: false,
-      onChanged: (bool? value) {},
-    );
-  }
+  bool isChecked = false;
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+    return TaskCheckboxState();
+  }
+}
+
+class TaskCheckboxState extends State<TaskCheckbox> {
+  bool isChecked = false;
+  @override
+  Widget build(BuildContext context) {
+    return Checkbox(
+      activeColor: Colors.amber,
+      value: isChecked,
+      onChanged: (newvalue) {
+        setState(() {
+          isChecked = newvalue!;
+        });
+      },
+    );
   }
 }
